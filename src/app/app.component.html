@@ -1,29 +1,31 @@
 <div class="titleList">
     <div>
-      <input [(ngModel)]='movieTitle' id='search' name="searchInput"/>
+      <input [(ngModel)]='movieTitle' id='search' name="searchInput" />
     </div>
     <div *ngIf="movieTitle">
-      <table *ngIf="!titleSelected">
+      <div class="movie-container" *ngIf="!titleSelected">
+        <table class="movie-list-table">
           <tbody>
-              <tr *ngFor="let item of searchItems" (click)="onTitleSelect(item)" class="display-block">
-                  <td class="display-block"><b></b>{{ item }}</td>
-              </tr>
+            <tr *ngFor="let item of searchItems" (click)="onTitleSelect(item)" class="display-block cursor-pointer">
+              <td class="display-block movie-name-row"><b></b>{{ item }}</td>
+            </tr>
           </tbody>
-      </table>
-      <table *ngIf="titleSelected">
+        </table>
+      </div>
+      <div class="movie-container" *ngIf="titleSelected">
+        <table class="movie-detail-table">
           <tbody>
-              <tr *ngFor="let locObj of locations">
-                  <td>{{ locObj.title }}</td>
-                  <td>{{ locObj.locations }}</td>
-              </tr>
+            <tr *ngFor="let locObj of locations" class="display-block cursor-pointer movie-detail-row">
+              <td class="display-block movie-title">{{ locObj.title }}</td>
+              <td class="display-block"><b>Location:</b>{{ locObj.locations }}</td>
+            </tr>
           </tbody>
-      </table>
+        </table>
+      </div>
     </div>
-</div>
-   
-<div class="mapDiv">
+  </div>
+  <div class="mapDiv">
     <agm-map [latitude]='mapOptions.lat' [longitude]='mapOptions.lng' [zoom]='mapOptions.zoom'>
       <agm-marker *ngFor="let locObj of commonService.currentMovieLocationsCoordinates" [latitude]="locObj.lat" [longitude]="locObj.lng"></agm-marker>
     </agm-map>
-
-</div>
+  </div>

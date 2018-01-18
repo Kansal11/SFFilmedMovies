@@ -1,11 +1,18 @@
-.titleList, .locationList{
+.titleList{
     position: absolute;
     top: 0;
     left: 0;
     margin-left: 20px;
     margin-top: 20px;
-    background: white;
-    width: 40vw;
+}
+
+.movie-container {
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+#search, .titleList {
+    width: 20vw;
 }
 
 .mapDiv {
@@ -17,10 +24,47 @@ agm-map {
     height: 100vh;
 }
 
-.titleList, .locationList {
+.titleList {
     z-index: 1000;
 }
 
 .display-block {
     display: block;
+}
+
+.movie-title {
+    font-size: 16px;
+}
+
+.movie-location {
+    font-size: 12px;
+}
+
+.movie-name-row{
+    padding: 5px;
+}
+
+.movie-detail-row {
+    padding: 8px 10px;
+}
+
+.movie-detail-row {
+    border: 1px solid #CCC;
+}
+
+.movie-list-table, .movie-detail-table {
+    background: white;
+}
+
+.movie-list-table {
+    width: 20vw;
+}
+
+.movie-detail-table {
+    /* margin-top: 10px; */
+    border-spacing: 0px !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

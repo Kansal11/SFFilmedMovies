@@ -102,12 +102,13 @@ export class CommonService{
     }
 
     getGeoCoordinatesForMovie(title: string) {
-        this.HashOfMovieLocations[title].forEach((locationObj)=>{
-            this.getGeoCoordinates(encodeURIComponent(locationObj.locations));
+        var self = this;
+        this.HashOfMovieLocations[title].forEach((locationObj) => {
+            self.getGeoCoordinates(encodeURIComponent(locationObj.locations));
         });     
     }
 
-    getGeoCoordinates(address:string) {
+    getGeoCoordinates = function(address:string) {
         request({
             url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
             json: true
