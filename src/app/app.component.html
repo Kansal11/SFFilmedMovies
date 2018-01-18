@@ -54,8 +54,8 @@
 </div>
    
 <div *ngIf="movieTitle" class="mapDiv">
-    <agm-map [latitude]='lat' [longitude]='lng'>
-      <agm-marker *ngFor="let locObj of locations" [latitude]="locObj.lat" [longitude]="locObj.lng"></agm-marker>
+    <agm-map [latitude]='mapOptions.lat' [longitude]='mapOptions.lng' [zoom]='mapOptions.zoom'>
+      <agm-marker *ngFor="let locObj of currentMovieLocationsCoordinates" [latitude]="locObj.lat" [longitude]="locObj.lng"></agm-marker>
     </agm-map>
 
 </div>
