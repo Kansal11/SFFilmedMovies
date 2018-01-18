@@ -20,3 +20,7 @@ agm-map {
 .titleList, .locationList {
     z-index: 1000;
 }
+
+.display-block {
+    display: block;
+}
