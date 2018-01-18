@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
+import request from 'request';
 
 @Injectable()
 export class CommonService{
@@ -8,7 +9,8 @@ export class CommonService{
     private locationList: any;
     
     public searchResults = [];
-    public HashOfMovieLocations = {};
+    private HashOfMovieLocations = {};
+    public currentMovieLocationsCoordinates = [];
 
     constructor(private http:Http) {
         this.http.get('./../assets/locations.json')
@@ -99,4 +101,29 @@ export class CommonService{
         return this.HashOfMovieLocations[title];
     }
 
+    getGeoCoordinatesForMovie(title: string) {
+        this.HashOfMovieLocations[title].forEach((locationObj)=>{
+            this.getGeoCoordinates(encodeURIComponent(locationObj.locations));
+        });     
+    }
+
+    getGeoCoordinates(address:string) {
+        request({
+            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
+            json: true
+            }, (error, response, body) => {
+            if(error){
+                console.log('Unable to fetch coordinates');
+            }
+            else if(body.status === 'ZERO_RESULTS'){
+                console.log('Unable to find the address');
+            }
+            else if(body && body.results && body.results.length>0 && body.results[0].geometry && body.results[0].geometry.location){
+                this.currentMovieLocationsCoordinates.push({
+                'lat':body.results[0].geometry.location.lat,
+                'lng': body.results[0].geometry.location.lng
+                });
+            }
+        })     
+    }
 }
