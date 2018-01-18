@@ -63,6 +63,7 @@ agm-map {
 .movie-detail-table {
     /* margin-top: 10px; */
     border-spacing: 0px !important;
+    width: 100%;
 }
 
 .cursor-pointer {
