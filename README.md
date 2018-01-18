@@ -12,11 +12,15 @@ Development server
 Make sure you have node and npm installed.
 
 npm install
+
 npm start
 
 Tech involved
 
 Node.js - Used to setup the server.
+
 Angular - Angular is really efficient and scalable, and is also framework that I am most comfortable with.
+
 Angular Google Maps - Angular wrapper around Google Maps, chosen as it is really easy to setup, and provides all functionality needed for the project.
+
 GoogleMapsGeocodingAPI - Used to get latitude and longitude data for the locations.
