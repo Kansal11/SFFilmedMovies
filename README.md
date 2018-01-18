@@ -10,7 +10,9 @@ Create a web app that shows on a map where movies have been filmed in San Franci
 Development server
 
 Make sure you have node and npm installed.
+
 npm install
+
 npm start
 
 Tech involved
